@@ -8,10 +8,24 @@
 import echartMixins from "@/utils/resizeMixins";
 
 export default {
+  props: {
+    pieData: {
+      type: Array,
+      required: true
+    }
+  },
   data() {
     return {
       chart: null
     };
+  },
+  watch: {
+    pieData: {
+      deep: true,
+      handler() {
+        this.draw()
+      }
+    }
   },
   mixins: [echartMixins],
   mounted() {
@@ -19,6 +33,7 @@ export default {
   },
   methods: {
     draw() {
+      console.log("传过来的饼图数据:"+JSON.stringify(this.pieData));
       // 基于准备好的dom，初始化echarts实例
       this.chart = this.$echarts.init(document.getElementById("centreLeft1Chart"));
       //  ----------------------------------------------------------------
@@ -47,31 +62,24 @@ export default {
           icon: "circle",
           bottom: 0,
           x: "center",
-          data: ["rose1", "rose2", "rose3", "rose4", "rose5", "rose6"],
           textStyle: {
             color: "#fff"
           }
         },
         series: [
           {
-            name: "增值电信业务统计表",
+            name: "订单种类分布",
             type: "pie",
-            radius: [10, 60],
+            radius: [20, 60],
             roseType: "area",
             center: ["50%", "40%"],
-            data: [
-              { value: 10, name: "rose1" },
-              { value: 5, name: "rose2" },
-              { value: 15, name: "rose3" },
-              { value: 25, name: "rose4" },
-              { value: 20, name: "rose5" },
-              { value: 35, name: "rose6" }
-            ]
+            data: this.pieData
           }
         ]
       });
     }
   },
+
   destroyed() {
     window.onresize = null;
   }

@@ -8,6 +8,20 @@
 import echartMixins from "@/utils/resizeMixins";
 
 export default {
+  props: {
+    chartData: {
+      type: Object,
+      required: true
+    }
+  },
+  watch: {
+    chartData: {
+      deep: true,
+      handler() {
+        this.draw()
+      }
+    }
+  },
   data() {
     return {
       chart: null
@@ -27,18 +41,7 @@ export default {
         angleAxis: {
           interval: 1,
           type: "category",
-          data: [
-            "there1",
-            "there2",
-            "there3",
-            "there4",
-            "there5",
-            "there6",
-            "there7",
-            "there8",
-            "there9",
-            "there10 "
-          ],
+          data: this.chartData.xaxis,
           z: 10,
           axisLine: {
             show: true,
@@ -96,17 +99,17 @@ export default {
             fontSize: 12,
             fontWeight: 0
           },
-          data: ["A"]
+          data: [""]
         },
         polar: {},
         series: [
           {
-            name: "A",
+            name: "",
             type: "bar",
-            radius: ["20%", "100%"],
+            radius: ["70%", "150%"],
             data: [
               {
-                value: 87,
+                value: Math.round(this.chartData.yaxis[0]/1000),
                 itemStyle: {
                   normal: {
                     color: "#f54d4d"
@@ -114,7 +117,7 @@ export default {
                 }
               },
               {
-                value: 80,
+                value: Math.round(this.chartData.yaxis[1]/1000),
                 itemStyle: {
                   normal: {
                     color: "#f87544"
@@ -122,7 +125,7 @@ export default {
                 }
               },
               {
-                value: 75,
+                value: Math.round(this.chartData.yaxis[2]/1000),
                 itemStyle: {
                   normal: {
                     color: "#ffae00"
@@ -130,7 +133,7 @@ export default {
                 }
               },
               {
-                value: 69,
+                value: Math.round(this.chartData.yaxis[3]/1000),
                 itemStyle: {
                   normal: {
                     color: "#dcff00"
@@ -138,7 +141,7 @@ export default {
                 }
               },
               {
-                value: 63,
+                value: Math.round(this.chartData.yaxis[4]/1000),
                 itemStyle: {
                   normal: {
                     color: "#25d053"
@@ -146,7 +149,7 @@ export default {
                 }
               },
               {
-                value: 54,
+                value: Math.round(this.chartData.yaxis[5]/1000),
                 itemStyle: {
                   normal: {
                     color: "#01fff5"
@@ -154,7 +157,7 @@ export default {
                 }
               },
               {
-                value: 47,
+                value: Math.round(this.chartData.yaxis[6]/1000),
                 itemStyle: {
                   normal: {
                     color: "#007cff"
@@ -162,7 +165,7 @@ export default {
                 }
               },
               {
-                value: 40,
+                value: Math.round(this.chartData.yaxis[7]/1000),
                 itemStyle: {
                   normal: {
                     color: "#4245ff"
@@ -170,7 +173,7 @@ export default {
                 }
               },
               {
-                value: 35,
+                value:Math.round(this.chartData.yaxis[8]/1000),
                 itemStyle: {
                   normal: {
                     color: "#c32eff"
@@ -178,10 +181,26 @@ export default {
                 }
               },
               {
-                value: 33,
+                value: Math.round(this.chartData.yaxis[9]/1000),
                 itemStyle: {
                   normal: {
                     color: "#ff62e8"
+                  }
+                }
+              },
+              {
+                value: Math.round(this.chartData.yaxis[10]/1000),
+                itemStyle: {
+                  normal: {
+                    color: "#ff61f1"
+                  }
+                }
+              },
+              {
+                value: Math.round(this.chartData.yaxis[11]/1000),
+                itemStyle: {
+                  normal: {
+                    color: "#ff61f1"
                   }
                 }
               }

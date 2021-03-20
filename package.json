@@ -1,21 +1,39 @@
 {
-  "name": "big-screen-vue-datav",
+  "name": "bingo-datav",
   "version": "1.0.1",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "start": "npm run dev",
+    "build": "node build/build.js",
+    "build:report": "npm_config_report=true npm run build",
+    "lint": "eslint --ext .js,.vue src",
+    "test": "npm run lint"
   },
   "dependencies": {
     "@jiaminghi/data-view": "^2.7.3",
     "@types/echarts": "^4.4.3",
+    "axios": "^0.21.1",
+    "compression-webpack-plugin": "^5.0.2",
     "core-js": "^3.6.4",
     "echarts": "^4.6.0",
+    "element-ui": "^2.15.1",
+    "friendly-errors-webpack-plugin": "^1.7.0",
+    "js-cookie": "^2.2.1",
+    "node-sass": "^4.14.1",
+    "optimize-css-assets-webpack-plugin": "^5.0.4",
+    "sass-loader": "^7.1.0",
+    "screenfull": "^5.1.0",
+    "script-ext-html-webpack-plugin": "^2.1.5",
+    "shelljs": "^0.8.4",
+    "style-loader": "^2.0.0",
+    "uglifyjs-webpack-plugin": "^1.2.4",
     "vue": "^2.6.11",
     "vue-awesome": "^4.0.2",
     "vue-router": "^3.1.5",
-    "vuex": "^3.1.2"
+    "vuex": "^3.1.2",
+    "webpack-cli": "^3.1.0",
+    "webpack-dev-server": "^3.1.5"
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",
@@ -28,9 +46,8 @@
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.1.2",
     "sass": "^1.25.0",
-    "sass-loader": "^8.0.2",
     "vue-template-compiler": "^2.6.11",
-    "webpack": "^4.44.2"
+    "webpack": "^4.16.5"
   },
   "eslintConfig": {
     "root": true,
@@ -46,8 +63,13 @@
     },
     "rules": {}
   },
+  "engines": {
+    "node": ">= 6.0.0",
+    "npm": ">= 3.0.0"
+  },
   "browserslist": [
     "> 1%",
-    "last 2 versions"
+    "last 2 versions",
+    "not ie <= 8"
   ]
 }
