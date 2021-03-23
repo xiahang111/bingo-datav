@@ -43,7 +43,7 @@
 
 <script>
     import centerChart from "@/components/echart/center/centerChartRate";
-    import {getDvOrderCenter, getCustomerList} from '@/api/report'
+    import {getDvOrderCenter, getCustomerList, getDvSalesmanByGroup } from '@/api/report'
 
     export default {
         data() {
@@ -189,8 +189,17 @@
         created() {
             this.setOrderCenterData();
             this.setCustomerList();
+            this.setDvSalesmanByGroup();
         },
         methods: {
+
+            setDvSalesmanByGroup(){
+                getDvSalesmanByGroup().then(response => {
+                    if (response.code == 'success') {
+
+                    }
+                });
+            },
             changeTiming() {
                 setInterval(() => {
                     this.setOrderCenterData();

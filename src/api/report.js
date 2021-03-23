@@ -54,6 +54,17 @@ export function getCustomerList(query) {
   })
 }
 
+export function getDvSalesmanByGroup(query) {
+
+  return request({
+    url: process.env.ADMIN_API + '/report/getDvSalesmanByGroup',
+    method: 'post',
+    data: query
+  })
+}
+
+
+
 
 
 
